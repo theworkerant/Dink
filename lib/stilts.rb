@@ -11,6 +11,9 @@ module Stilts
   require 'stilts/configuration'
   require 'stilts/sender'
   require 'stilts/rack'
+  require 'stilts/railtie.rb' if defined?(Rails)
+  
+  
   
   LOG_PREFIX = "[Stilts] "
 
@@ -39,7 +42,7 @@ module Stilts
       write_verbose_log("Environment Info: #{environment_info}")
     end
 
-    # Prints out the response body from Hoptoad for debugging help
+    # Prints out the response body from Stilts for debugging help
     def report_response_body(response)
       write_verbose_log("Response from Server: \n#{response}")
     end

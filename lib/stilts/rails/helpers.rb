@@ -28,6 +28,10 @@ module Stilts
     def url
       Stilts.configuration.url.dup
     end
+    
+    def logger
+      Stilts.configuration.logger
+    end
 
   end
 end

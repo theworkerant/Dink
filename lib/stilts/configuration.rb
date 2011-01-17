@@ -11,7 +11,7 @@ module Stilts
     # The host to connect to
     attr_accessor :host
 
-    # The port on which your Hoptoad server runs (defaults to 443 for secure
+    # The port on which your server runs (defaults to 443 for secure
     # connections, 80 for insecure connections).
     attr_accessor :port
 
