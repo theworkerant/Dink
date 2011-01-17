@@ -13,8 +13,6 @@ module Stilts
   require 'stilts/rack'
   require 'stilts/railtie.rb' if defined?(Rails)
   
-  
-  
   LOG_PREFIX = "[Stilts] "
 
   class << self

@@ -14,6 +14,12 @@ module Stilts
         config.logger           ||= Rails.logger
         config.framework        = "Rails: #{::Rails::VERSION::STRING}"
       end
+      
+      config.to_prepare do
+        require 'stilts/rails/hooks'
+        ApplicationController.send(:extend, Stilts::Hooks)
+      end
+      
 
       if defined?(ActionView::Base)        
       
