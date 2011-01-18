@@ -2,13 +2,15 @@ module Stilts
   module Hooks
 
     def self.included(base)
-      base.send(:include, InstanceMethods)
-      base.before_filter :log_test
-      base.after_filter :log_test
+      base.before_filter :clear_resize_batch
+      base.after_filter :resize_batch
     end
 
-    def log_test
-      Rails.logger.debug {"i'm being executed after!! --- --- }
+    def clear_resize_batch
+      @resize_batch = []
+    end
+    def resize_batch
+      @resize_batch
     end
   end
 end

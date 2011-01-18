@@ -14,18 +14,20 @@ module Stilts
         config.logger           ||= Rails.logger
         config.framework        = "Rails: #{::Rails::VERSION::STRING}"
       end
-      
+
       config.to_prepare do
         require 'stilts/rails/hooks'
-        ApplicationController.send(:extend, Stilts::Hooks)
+        ActiveSupport.on_load(:action_controller) do
+          include Stilts::Hooks
+        end
       end
-      
 
-      if defined?(ActionView::Base)        
-      
+
+      if defined?(ActionView::Base)
+
         require 'stilts/rails/helpers'
         ActionView::Base.send :include, Stilts::Helpers
-        
+
       end
     end
   end
