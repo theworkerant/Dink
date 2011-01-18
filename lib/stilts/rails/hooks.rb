@@ -12,5 +12,6 @@ module Stilts
     def resize_batch
       @resize_batch
     end
+    
   end
 end
