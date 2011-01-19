@@ -1,20 +1,16 @@
 module Stilts
   module Helpers
+    include ActionView::Helpers
     
-    def resize(image_source)
-      b = Benchmark.measure do
-        @response = Stilts.sender.send_to_resizer({:image_source => image_source}.to_json.to_s)
-      end
-      # logger.debug { "RESIZER BENCHMARK :: #{b}" }
-
-      image_url = url
-      image_url.path = ""
-      image_tag("#{image_url}#{@response['image_url']}")
+    def transform(image)
+      image = Stilts::Image.new(image)
+      # @response = Stilts.sender.send_to_resizer({:image_source => image_source}.to_json.to_s)
+      image_tag(image.transformed_url)
     end
 
     def stream_resize(image_source)
       b = Benchmark.measure do
-        @params = Addressable::URI.parse(url.to_s)
+        @params = Addressable::URI.parse(url.to_s) # TODO get URI.parse out of Addressable to remove the dependency
         @params.query_values = {:image_source => image_source, :stream => "1"}
       end
       # logger.debug { "STREAM BENCHMARK :: #{b}" }

@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts/rails/helpers')
 
-describe Stilts::Helpers do
+describe Stilts::Configuration do
 
   it "should bla" do
     pending

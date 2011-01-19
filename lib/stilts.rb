@@ -11,6 +11,7 @@ module Stilts
   require 'stilts/configuration'
   require 'stilts/sender'
   require 'stilts/rack'
+  require 'stilts/image'
   require 'stilts/railtie' if defined?(Rails)
   
   LOG_PREFIX = "[Stilts] "

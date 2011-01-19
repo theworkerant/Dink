@@ -18,21 +18,9 @@ module Stilts
     # +true+ for https connections, +false+ for http connections.
     attr_accessor :secure
 
-    # A list of parameters that should be filtered out of what is sent to Hoptoad.
-    # By default, all "password" attributes will have their contents replaced.
-    attr_reader :params_filters
-
-    # A list of filters for cleaning and pruning the backtrace. See #filter_backtrace.
-    attr_reader :backtrace_filters
-
-    # A list of filters for ignoring exceptions. See #ignore_by_filter.
-    attr_reader :ignore_by_filters
-
     # The path to the project in which the error occurred, such as the RAILS_ROOT
     attr_accessor :project_root
 
-    # The url of the notifier library being used to send notifications
-    attr_accessor :notifier_url
 
     # The logger used by 
     attr_accessor :logger
@@ -46,6 +34,7 @@ module Stilts
       @secure                   = false
       @host                     = 'localhost'
       @framework                = 'Standalone'
+      @protocol                 = protocol
     end
 
     # Allows config options to be read like a hash
