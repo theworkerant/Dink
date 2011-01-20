@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   
   s.add_dependency('addressable', '~> 2.2.2')
+  s.add_dependency('json', '~> 1.4.6')
 end

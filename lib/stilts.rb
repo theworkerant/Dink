@@ -2,6 +2,7 @@ module Stilts
   require 'net/http'
   require 'net/https'
   require 'addressable/uri'
+  require 'json'
   # begin
   #   require 'active_support'
   # rescue LoadError
@@ -12,6 +13,7 @@ module Stilts
   require 'stilts/sender'
   require 'stilts/rack'
   require 'stilts/image'
+  require 'stilts/batch'
   require 'stilts/railtie' if defined?(Rails)
   
   LOG_PREFIX = "[Stilts] "

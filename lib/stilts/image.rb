@@ -12,17 +12,17 @@ module Stilts
     ]
 
     # The public location of the image
-    attr_accessor :url, :device_width_ratio
+    attr_accessor :source, :device_width_ratio
     
     # :nodoc:
-    def initialize(args)
-      self.url                  = args[:url]
-      self.device_width_ratio   = args[:device_width_ratio] || 1
+    def initialize(source, options)
+      self.source               = source
+      self.device_width_ratio   = options[:device_width_ratio] || 1
     end
     
     # Generates a SHA1 represenation for a particular URL
     def url_id
-      Digest::SHA1.hexdigest(self.url)
+      Digest::SHA1.hexdigest(self.source)
     end
     
     # Combines resizing parameters into a short, unique slug to be appended to the final image name
@@ -38,18 +38,18 @@ module Stilts
     end
     
     # Location on server that will server this image
-    def transformed_url
+    def cdn_url
       Stilts.configuration.protocol + "://" +
       Stilts.configuration.host +
-      "/transform/" +
-      Stilts.configuration.api_key +
-      "/" + self.name
+      "/images/" +
+      Stilts.configuration.api_key + "/" +
+      self.name
     end
     
     # A hash representation of the image attributes
     def to_hash
       {
-        :url => self.url,
+        :source => self.source,
         :name => self.name,
       }
     end

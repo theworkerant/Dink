@@ -3,7 +3,7 @@ module Stilts
   class Configuration
 
     OPTIONS = [:api_key, :host, :http_open_timeout, :http_read_timeout, :project_root,
-    :port, :protocol, :proxy_host, :secure, :framework].freeze
+    :port, :protocol, :secure, :framework].freeze
 
     # The API key for your project, found on the project edit form.
     attr_accessor :api_key
@@ -21,20 +21,28 @@ module Stilts
     # The path to the project in which the error occurred, such as the RAILS_ROOT
     attr_accessor :project_root
 
-
     # The logger used by 
     attr_accessor :logger
 
     # The framework is configured to use
     attr_accessor :framework
+    
+    # The HTTP open timeout in seconds (defaults to 2).
+    attr_accessor :http_open_timeout
+
+    # The HTTP read timeout in seconds (defaults to 5).
+    attr_accessor :http_read_timeout
 
     alias_method :secure?, :secure
 
     def initialize
       @secure                   = false
-      @host                     = 'localhost'
+      @host                     = 'stilts.developmentnow.com'
+      @cdn_url                  = 'd15ceu2kbcb932.cloudfront.net'
       @framework                = 'Standalone'
       @protocol                 = protocol
+      @http_open_timeout        = 2
+      @http_read_timeout        = 5
     end
 
     # Allows config options to be read like a hash

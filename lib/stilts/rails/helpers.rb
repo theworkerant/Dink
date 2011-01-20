@@ -2,10 +2,11 @@ module Stilts
   module Helpers
     include ActionView::Helpers
     
-    def transform(image)
-      image = Stilts::Image.new(image)
-      # @response = Stilts.sender.send_to_resizer({:image_source => image_source}.to_json.to_s)
-      image_tag(image.transformed_url)
+    # Take image transform parameters and generate an image tag and stick it into the batch
+    def transform_image_tag(source, transform_options = {}, image_options = {})
+      image = Stilts::Image.new(source, transform_options)
+      @image_batch << image
+      image_tag(image.cdn_url, image_options)
     end
 
     def stream_resize(image_source)
@@ -19,10 +20,6 @@ module Stilts
       stream_url.path = "/resize"
       stream_url.query = @params.query
       stream_url.to_s
-    end
-
-    def url
-      Stilts.configuration.url.dup
     end
     
     def logger

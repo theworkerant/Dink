@@ -6,13 +6,14 @@ include Stilts::Helpers
 describe Stilts::Helpers do  
   
   before(:each) do
+    @image_batch = Stilts::Batch.new
     @image = test_images[rand(3)]
   end
   
   describe "#transform" do
     it "should respond with some image tag HTML" do
       
-      transform(@image).should =~ /^\<img/
+      transform_image_tag("http://bla.com/image.jpg", {}).should =~ /^\<img/
       
       
     end

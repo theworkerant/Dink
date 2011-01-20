@@ -9,10 +9,18 @@ end
 
 def test_images
   [
-    { :url => "http://www.crazy-frog.us/donthotlink-crazy-frog-1024x768-1.jpg" },
-    { :url => "https://totalfright.websitesource.net/mm5/pics/32901.jpg" },
-    { :url => "http://iamthatmommy.files.wordpress.com/2010/04/unicorn1.jpg"}
+    { :source => "http://www.crazy-frog.us/donthotlink-crazy-frog-1024x768-1.jpg",
+      :options => {} },
+    { :source => "https://totalfright.websitesource.net/mm5/pics/32901.jpg",
+      :options => {} },
+    { :source => "http://iamthatmommy.files.wordpress.com/2010/04/unicorn1.jpg",
+      :options => {} }
   ]
+end
+
+def random_image
+  image_number = rand(test_images.size) 
+  Stilts::Image.new(test_images[image_number][:source], test_images[image_number][:options])
 end
 
 Stilts.configure do |c|

@@ -4,7 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts/image')
 describe Stilts::Image do  
   
   before(:each) do
-    @image = Stilts::Image.new(test_images[rand(3)])
+    @image = random_image
   end
   
   it "should have some default values assigned" do
@@ -31,9 +31,9 @@ describe Stilts::Image do
     end
   end
   
-  describe "#transformed_url" do
-    it "should respond with the full url of a post-transform image" do
-      @image.transformed_url.should =~ /^http:\/\//
+  describe "#s3_url" do
+    it "should respond with the full url of a post-transform and distributed image" do
+      @image.cdn_url.should =~ /^http:\/\//
     end
   end
   
@@ -43,8 +43,25 @@ describe Stilts::Image do
     end
     it "should have some specific keys" do
       hash = @image.to_hash
-      hash[:url].should_not be nil
+      hash[:source].should_not be nil
       hash[:name].should_not be nil
+    end
+  end
+  
+  describe "#cached?" do
+    it "should return true if the image name is in local cache" do
+      pending
+    end
+    it "should return false if the image name is not found in local cache" do
+      pending
+    end
+  end
+  
+  describe "#to_json" do
+    it "should respond to to_json" do
+      json = @image.to_json
+      json.should be_a_kind_of(String)
+      JSON.parse(json).should be_a_kind_of(Hash)
     end
   end
   
