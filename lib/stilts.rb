@@ -11,6 +11,7 @@ module Stilts
   
   require 'stilts/configuration'
   require 'stilts/sender'
+  require 'stilts/receiver'
   require 'stilts/rack'
   require 'stilts/image'
   require 'stilts/batch'
@@ -21,17 +22,20 @@ module Stilts
   class << self
     
     # The sender object is responsible for delivering formatted data to the server.
-    # Must respond to #send_to_hoptoad. See Stilts::Sender.
     attr_accessor :sender
 
     # A configuration object. Must act like a hash and return sensible
     # values for all configuration options. See Stilts::Configuration.
     attr_accessor :configuration
     
+    # A receiver of requests
+    attr_accessor :receiver
+    
     def configure(silent = false)
       self.configuration ||= Configuration.new
       yield(configuration)
       self.sender = Sender.new(configuration)
+      self.receiver = Receiver.new(configuration)
     end
     
     def logger

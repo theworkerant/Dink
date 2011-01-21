@@ -10,6 +10,9 @@ module Stilts
 
     # The host to connect to
     attr_accessor :host
+    
+    # The CDN host to connect to
+    attr_accessor :cdn_host
 
     # The port on which your server runs (defaults to 443 for secure
     # connections, 80 for insecure connections).
@@ -37,8 +40,11 @@ module Stilts
 
     def initialize
       @secure                   = false
-      @host                     = 'stilts.developmentnow.com'
-      @cdn_url                  = 'd15ceu2kbcb932.cloudfront.net'
+      # @host                     = 'stilts.developmentnow.com'
+      # @port                     = 80
+      @host                     = "localhost"
+      @port                     = 3000
+      @cdn_host                 = 'd15ceu2kbcb932.cloudfront.net'
       @framework                = 'Standalone'
       @protocol                 = protocol
       @http_open_timeout        = 2

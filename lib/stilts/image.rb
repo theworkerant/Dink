@@ -40,7 +40,7 @@ module Stilts
     # Location on server that will server this image
     def cdn_url
       Stilts.configuration.protocol + "://" +
-      Stilts.configuration.host +
+      Stilts.configuration.cdn_host +
       "/images/" +
       Stilts.configuration.api_key + "/" +
       self.name

@@ -6,4 +6,5 @@ describe Stilts::Receiver do
   it "should log the round-trip time" do
     pending
   end
+  
 end

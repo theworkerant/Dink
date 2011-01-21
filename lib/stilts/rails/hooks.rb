@@ -10,7 +10,7 @@ module Stilts
       @image_batch = Stilts::Batch.new
     end
     def deliver_batch
-      Stilts::Batch.deliver
+      @image_batch.deliver unless @image_batch.empty?
     end
     
   end

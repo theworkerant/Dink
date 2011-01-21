@@ -13,7 +13,7 @@ describe Stilts::Helpers do
   describe "#transform" do
     it "should respond with some image tag HTML" do
       
-      transform_image_tag("http://bla.com/image.jpg", {}).should =~ /^\<img/
+      transform_image("http://bla.com/image.jpg", {}).should =~ /^\<img/
       
       
     end

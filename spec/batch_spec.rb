@@ -16,6 +16,12 @@ describe Stilts::Batch do
     @batch.size.should be 1
   end
   
+  it "should respond to empty?" do
+    @batch.empty?.should be true
+    @batch << @image1
+    @batch.empty?.should be false
+  end
+  
   it "should respond to #to_json" do
     @batch << @image1
     @batch << @image2
@@ -27,20 +33,22 @@ describe Stilts::Batch do
       @batch << @image1
       @batch << @image2
     end
+    
     it "should send a hash of unprocessed images to Stilts" do
+      Stilts.sender.user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
       @batch.deliver
     end
   end
 
-  describe "#screen" do
-    it "should check local cache to see if any of the images have already been processed" do
-      pending
-    end
-    it "should skip sending of already processed images to Stilts" do
-      pending
-      # cache fake result, try to resend image
-    end
-  end
+  # describe "#screen" do
+  #   it "should check local cache to see if any of the images have already been processed" do
+  #     pending
+  #   end
+  #   it "should skip sending of already processed images to Stilts" do
+  #     pending
+  #     # cache fake result, try to resend image
+  #   end
+  # end
 
   
 end

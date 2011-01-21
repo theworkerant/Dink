@@ -23,27 +23,21 @@ module Stilts
     end
 
     def send_image_transform_data(data)
-      http              = Net::HTTP.new(Stilts.configuration.host, Stilts.configuration.port)
+      http              = Net::HTTP.new(@host, @port)
 
-      http.read_timeout = Stilts.configuration.http_read_timeout
-      http.open_timeout = Stilts.configuration.http_open_timeout
+      http.read_timeout = @http_read_timeout
+      http.open_timeout = @http_open_timeout
       http.use_ssl      = false
       headers           = TRANSFORM_HEADERS.merge({'User-Agent' => user_agent})
 
       response = begin
-        http.post("transform", data, headers)
+        http.post("/transform/#{Stilts.configuration.api_key}", data, headers)
       rescue *HTTP_ERRORS => e
         log :error, "Timeout while contacting the server. #{e}"
         nil
       end
 
-      case response
-      when Net::HTTPSuccess then
-        log :info, "Success: #{response.class}", response
-        return JSON.parse(response.body)
-      else
-        log :error, "Failure: #{response.class}", response
-      end
+      Stilts.receiver.receive(response)
     end
 
     def log(level, message, response = nil)
