@@ -46,6 +46,15 @@ module Stilts
       self.name
     end
     
+    def deliver
+      Stilts.sender.send_image_transform_data("[#{self.to_json}]")
+    end
+    
+    # Ready images for transport across voidy vastness of teh interweb
+    def to_json
+      JSON.generate(self.to_hash)
+    end
+    
     # A hash representation of the image attributes
     def to_hash
       {

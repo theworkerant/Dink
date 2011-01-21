@@ -8,12 +8,11 @@ module Stilts
       case response
       when Net::HTTPSuccess then
         log :info, "Success: #{response.class}", response
+        
         return JSON.parse(response.body)
       else
         log :error, "Failure: #{response.class}", response
       end
-      
-      @some_url = "Erglle!"
     end
 
     def logger

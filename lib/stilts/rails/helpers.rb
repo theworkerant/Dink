@@ -4,10 +4,9 @@ module Stilts
     
     # Take image transform parameters and generate an image tag and stick it into the batch
     def transform_image(source, transform_options = {}, image_options = {})
-      image = Stilts::Image.new(source, transform_options)
-      @image_batch << image
-      @some_url = "bla"
-      image_tag(@some_url, image_options)
+      image = Stilts::Image.new(source, transform_options).deliver
+      # @image_batch << image
+      image_tag(image["url"], image_options)
     end
 
     # def stream_resize(image_source)

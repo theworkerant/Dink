@@ -48,7 +48,7 @@ module Stilts
       @framework                = 'Standalone'
       @protocol                 = protocol
       @http_open_timeout        = 2
-      @http_read_timeout        = 5
+      @http_read_timeout        = 10
     end
 
     # Allows config options to be read like a hash
