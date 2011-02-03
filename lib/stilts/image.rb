@@ -7,7 +7,7 @@ module Stilts
       :device_width_ratio => "dwr"
     }
     
-    TRANSFORM_OPTIONS = [
+    PROCESS_OPTIONS = [
       "device_width_ratio"
     ]
 
@@ -27,7 +27,7 @@ module Stilts
     
     # Combines resizing parameters into a short, unique slug to be appended to the final image name
     def params_slug
-      TRANSFORM_OPTIONS.map do |option|
+      PROCESS_OPTIONS.map do |option|
         param_slug(option)
       end.join("")
     end
@@ -47,7 +47,7 @@ module Stilts
     end
     
     def deliver
-      Stilts.sender.send_image_transform_data("[#{self.to_json}]")
+      Stilts.sender.send_image_process_data("[#{self.to_json}]")
     end
     
     # Ready images for transport across voidy vastness of teh interweb

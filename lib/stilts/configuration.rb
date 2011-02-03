@@ -40,10 +40,8 @@ module Stilts
 
     def initialize
       @secure                   = false
-      # @host                     = 'stilts.developmentnow.com'
-      # @port                     = 80
-      @host                     = "localhost"
-      @port                     = 3000
+      @host                     ||= 'stilts.developmentnow.com'
+      @port                     ||= 80
       @cdn_host                 = 'd15ceu2kbcb932.cloudfront.net'
       @framework                = 'Standalone'
       @protocol                 = protocol

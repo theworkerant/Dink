@@ -9,8 +9,8 @@ module Stilts
 
     config.before_initialize do
       Stilts.configure do |config|
-        config.host             = "localhost"
-        config.port             = 3000
+        # config.host             = "localhost"
+        # config.port             = 3000
         config.logger           ||= Rails.logger
         config.framework        = "Rails: #{::Rails::VERSION::STRING}"
       end

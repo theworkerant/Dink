@@ -3,10 +3,10 @@ module Stilts
     include ActionView::Helpers
     
     # Take image transform parameters and generate an image tag and stick it into the batch
-    def transform_image(source, transform_options = {}, image_options = {})
-      image = Stilts::Image.new(source, transform_options).deliver
+    def transform_image(source, process_options = {}, image_options = {})
+      image = Stilts::Image.new(source, process_options).deliver
       # @image_batch << image
-      image_tag(image["url"], image_options)
+      image_tag(image["results"].first["url"], image_options)
     end
 
     # def stream_resize(image_source)

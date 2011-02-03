@@ -1,6 +1,6 @@
 module Stilts
   class Sender
-    TRANSFORM_HEADERS = {
+    PROCESS_HEADERS = {
       'Content-Type'    => 'application/json',
       'Accept'          => 'application/json'
     }
@@ -22,16 +22,17 @@ module Stilts
       end
     end
 
-    def send_image_transform_data(data)
+    def send_image_process_data(data)
       http              = Net::HTTP.new(@host, @port)
 
       http.read_timeout = @http_read_timeout
       http.open_timeout = @http_open_timeout
       http.use_ssl      = false
-      headers           = TRANSFORM_HEADERS.merge({'User-Agent' => user_agent})
+      headers           = PROCESS_HEADERS.merge({'User-Agent' => user_agent})
 
+      logger.debug { "Sending to: #{@host}:#{@port}" }
       response = begin
-        http.post("/transform/#{Stilts.configuration.api_key}", data, headers)
+        http.post("/process/#{Stilts.configuration.api_key}", data, headers)
       rescue *HTTP_ERRORS => e
         log :error, "Timeout while contacting the server. #{e}"
         nil

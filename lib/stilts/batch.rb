@@ -10,7 +10,7 @@ module Stilts
     
     # Send images to Stilts for transformation, first +screen+ and translate +to_json+
     def deliver
-      Stilts.sender.send_image_transform_data(self.to_json)
+      Stilts.sender.send_image_process_data(self.to_json)
     end
     
     # Ready images for transport across voidy vastness of teh interweb
