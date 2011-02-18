@@ -32,7 +32,7 @@ module Dink
 
       logger.debug { "Sending to: #{@host}:#{@port}" }
       response = begin
-        http.post("/resize/#{Dink.configuration.api_key}", data, headers)
+        http.post("/link/#{Dink.configuration.api_key}", data, headers)
       rescue *HTTP_ERRORS => e
         log :error, "Timeout while contacting the server. #{e}"
         nil

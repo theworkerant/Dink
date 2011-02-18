@@ -3,10 +3,11 @@ module Dink
     include ActionView::Helpers
     
     # Take image transform parameters and generate an image tag and stick it into the batch
-    def transform_image(source, process_options = {}, image_options = {})
+    def dink!(source, process_options = {}, image_options = {})
       image = Dink::Image.new(source, process_options).deliver
+      Rails.logger.debug{ image.inspect }
       # @image_batch << image
-      image_tag(image["results"].first["url"], image_options)
+      image_tag(image["results"]["url"], image_options)
     end
 
     # def stream_resize(image_source)
