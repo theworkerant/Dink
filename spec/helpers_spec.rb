@@ -1,12 +1,12 @@
 require "rails"
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts/rails/helpers')
-include Stilts::Helpers
+require File.expand_path(File.dirname(__FILE__) + '/../lib/dink/rails/helpers')
+include Dink::Helpers
 
-describe Stilts::Helpers do  
+describe Dink::Helpers do  
   
   before(:each) do
-    @image_batch = Stilts::Batch.new
+    @image_batch = Dink::Batch.new
     @image = test_images[rand(3)]
   end
   

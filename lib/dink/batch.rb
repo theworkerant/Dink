@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   class Batch
     
     attr_accessor :images
@@ -8,9 +8,9 @@ module Stilts
       self.images = []
     end
     
-    # Send images to Stilts for transformation, first +screen+ and translate +to_json+
+    # Send images to Dink for transformation, first +screen+ and translate +to_json+
     def deliver
-      Stilts.sender.send_image_process_data(self.to_json)
+      Dink.sender.send_image_process_data(self.to_json)
     end
     
     # Ready images for transport across voidy vastness of teh interweb

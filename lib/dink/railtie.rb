@@ -1,14 +1,14 @@
-require 'stilts'
+require 'dink'
 require 'rails'
 
-module Stilts
+module Dink
   class Railtie < Rails::Railtie
-    initializer "stilts.use_rack_middleware" do |app|
-      app.config.middleware.use "Stilts::Rack"
+    initializer "dink.use_rack_middleware" do |app|
+      app.config.middleware.use "Dink::Rack"
     end
 
     config.before_initialize do
-      Stilts.configure do |config|
+      Dink.configure do |config|
         # config.host             = "localhost"
         # config.port             = 3000
         config.logger           ||= Rails.logger
@@ -16,17 +16,17 @@ module Stilts
       end
 
       config.to_prepare do
-        require 'stilts/rails/hooks'
+        require 'dink/rails/hooks'
         ActiveSupport.on_load(:action_controller) do
-          include Stilts::Hooks
+          include Dink::Hooks
         end
       end
 
 
       if defined?(ActionView::Base)
 
-        require 'stilts/rails/helpers'
-        ActionView::Base.send :include, Stilts::Helpers
+        require 'dink/rails/helpers'
+        ActionView::Base.send :include, Dink::Helpers
 
       end
     end

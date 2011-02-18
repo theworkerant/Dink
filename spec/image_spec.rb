@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts/image')
+require File.expand_path(File.dirname(__FILE__) + '/../lib/dink/image')
 
-describe Stilts::Image do  
+describe Dink::Image do  
   
   before(:each) do
     @image = random_image

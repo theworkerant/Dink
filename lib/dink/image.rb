@@ -1,4 +1,4 @@
-module Stilts
+module Dink
 
   # Intermediate utility class for image manipulation
   class Image
@@ -39,15 +39,15 @@ module Stilts
     
     # Location on server that will server this image
     def cdn_url
-      Stilts.configuration.protocol + "://" +
-      Stilts.configuration.cdn_host +
+      Dink.configuration.protocol + "://" +
+      Dink.configuration.cdn_host +
       "/images/" +
-      Stilts.configuration.api_key + "/" +
+      Dink.configuration.api_key + "/" +
       self.name
     end
     
     def deliver
-      Stilts.sender.send_image_process_data("[#{self.to_json}]")
+      Dink.sender.send_image_process_data("[#{self.to_json}]")
     end
     
     # Ready images for transport across voidy vastness of teh interweb

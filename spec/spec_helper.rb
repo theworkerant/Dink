@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts')
+require File.expand_path(File.dirname(__FILE__) + '/../lib/dink')
 require "rails/all"
 
 RSpec.configure do |config|
@@ -20,9 +20,9 @@ end
 
 def random_image
   image_number = rand(test_images.size) 
-  Stilts::Image.new(test_images[image_number][:source], test_images[image_number][:options])
+  Dink::Image.new(test_images[image_number][:source], test_images[image_number][:options])
 end
 
-Stilts.configure do |c|
+Dink.configure do |c|
   c.api_key = "1234123412341234"
 end

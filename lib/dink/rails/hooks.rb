@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   module Hooks
   
     def self.included(base)
@@ -7,7 +7,7 @@ module Stilts
     end
 
     def image_batch
-      @image_batch = Stilts::Batch.new
+      @image_batch = Dink::Batch.new
     end
     def deliver_batch
       @image_batch.deliver unless @image_batch.empty?

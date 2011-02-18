@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   require 'net/http'
   require 'net/https'
   require 'addressable/uri'
@@ -9,15 +9,15 @@ module Stilts
   #   require 'activesupport'
   # end
   
-  require 'stilts/configuration'
-  require 'stilts/sender'
-  require 'stilts/receiver'
-  require 'stilts/rack'
-  require 'stilts/image'
-  require 'stilts/batch'
-  require 'stilts/railtie' if defined?(Rails)
+  require 'dink/configuration'
+  require 'dink/sender'
+  require 'dink/receiver'
+  require 'dink/rack'
+  require 'dink/image'
+  require 'dink/batch'
+  require 'dink/railtie' if defined?(Rails)
   
-  LOG_PREFIX = "[Stilts] "
+  LOG_PREFIX = "[Dink] "
 
   class << self
     
@@ -25,7 +25,7 @@ module Stilts
     attr_accessor :sender
 
     # A configuration object. Must act like a hash and return sensible
-    # values for all configuration options. See Stilts::Configuration.
+    # values for all configuration options. See Dink::Configuration.
     attr_accessor :configuration
     
     # A receiver of requests
@@ -47,7 +47,7 @@ module Stilts
       write_verbose_log("Environment Info: #{environment_info}")
     end
 
-    # Prints out the response body from Stilts for debugging help
+    # Prints out the response body from Dink for debugging help
     def report_response_body(response)
       write_verbose_log("Response from Server: \n#{response}")
     end

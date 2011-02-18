@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../lib/stilts')
+require File.expand_path(File.dirname(__FILE__) + '/../lib/dink')
 
-describe Stilts do  
+describe Dink do  
   
   describe "#configure" do
     it "should have with an API key or raise an error" do

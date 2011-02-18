@@ -1,10 +1,10 @@
-module Stilts
+module Dink
   module Helpers
     include ActionView::Helpers
     
     # Take image transform parameters and generate an image tag and stick it into the batch
     def transform_image(source, process_options = {}, image_options = {})
-      image = Stilts::Image.new(source, process_options).deliver
+      image = Dink::Image.new(source, process_options).deliver
       # @image_batch << image
       image_tag(image["results"].first["url"], image_options)
     end
@@ -23,7 +23,7 @@ module Stilts
     # end
     
     def logger
-      Stilts.configuration.logger
+      Dink.configuration.logger
     end
 
   end

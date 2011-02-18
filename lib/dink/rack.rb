@@ -1,5 +1,5 @@
 # Simply grab the headers out of the request for use later
-module Stilts
+module Dink
   class Rack
     
     def initialize(app)
@@ -7,7 +7,7 @@ module Stilts
     end
 
     def call(env)
-      Stilts.sender.user_agent = env["HTTP_USER_AGENT"]
+      Dink.sender.user_agent = env["HTTP_USER_AGENT"]
       @app.call(env)
     end
   end

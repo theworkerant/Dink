@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   # Used to set up and modify settings for the notifier.
   class Configuration
 
@@ -40,7 +40,7 @@ module Stilts
 
     def initialize
       @secure                   = false
-      @host                     ||= 'stilts.developmentnow.com'
+      @host                     ||= 'dink.developmentnow.com'
       @port                     ||= 80
       @cdn_host                 = 'd15ceu2kbcb932.cloudfront.net'
       @framework                = 'Standalone'

@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   class Receiver
 
     def initialize(options = {})
@@ -16,13 +16,13 @@ module Stilts
     end
 
     def logger
-      Stilts.configuration.logger
+      Dink.configuration.logger
     end
 
     def log(level, message, response = nil)
       logger.send level, LOG_PREFIX + message if logger
-      Stilts.report_environment_info
-      Stilts.report_response_body(response.body) if response && response.respond_to?(:body)
+      Dink.report_environment_info
+      Dink.report_response_body(response.body) if response && response.respond_to?(:body)
     end
 
   end

@@ -1,4 +1,4 @@
-module Stilts
+module Dink
   class Sender
     PROCESS_HEADERS = {
       'Content-Type'    => 'application/json',
@@ -32,23 +32,23 @@ module Stilts
 
       logger.debug { "Sending to: #{@host}:#{@port}" }
       response = begin
-        http.post("/process/#{Stilts.configuration.api_key}", data, headers)
+        http.post("/resize/#{Dink.configuration.api_key}", data, headers)
       rescue *HTTP_ERRORS => e
         log :error, "Timeout while contacting the server. #{e}"
         nil
       end
 
-      Stilts.receiver.receive(response)
+      Dink.receiver.receive(response)
     end
 
     def log(level, message, response = nil)
       logger.send level, LOG_PREFIX + message if logger
-      Stilts.report_environment_info
-      Stilts.report_response_body(response.body) if response && response.respond_to?(:body)
+      Dink.report_environment_info
+      Dink.report_response_body(response.body) if response && response.respond_to?(:body)
     end
 
     def logger
-      Stilts.configuration.logger
+      Dink.configuration.logger
     end
 
   end
