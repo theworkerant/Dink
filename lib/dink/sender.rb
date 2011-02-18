@@ -30,7 +30,7 @@ module Dink
       http.use_ssl      = false
       headers           = PROCESS_HEADERS.merge({'User-Agent' => user_agent})
 
-      log :debug "Sending to: #{@host}:#{@port}"
+      log :debug, "Sending to: #{@host}:#{@port}"
       response = begin
         http.post("/link/#{Dink.configuration.api_key}", data, headers)
       rescue *HTTP_ERRORS => e
